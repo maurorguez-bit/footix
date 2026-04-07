@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+*/node_modules/
+
+# Build outputs
+dist/
+*/dist/
+
+# Databases (NUNCA al repo)
+*.db
+*.db-journal
+*.sqlite
+
+# Secrets (NUNCA al repo)
+.env
+.env.*
+**/.env
+**/.env.*
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

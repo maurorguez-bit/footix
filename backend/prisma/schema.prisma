@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String     @id @default(cuid())
+  email     String     @unique
+  password  String
+  nombre    String
+  saves     GameSave[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model GameSave {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  slot       Int
+  state      String   @db.Text  // Full GameState as JSON — @db.Text requerido en PostgreSQL para strings largas
+  clubNombre String
+  temporada  Int      @default(1)
+  jornada    Int      @default(1)
+  posicion   Int      @default(1)
+  division   Int      @default(0)
+  updatedAt  DateTime @updatedAt
+  createdAt  DateTime @default(now())
+
+  @@unique([userId, slot])
+}

@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg:      #030d1a;
+  --sur:     #0a1525;
+  --sur2:    #0f1e32;
+  --bor:     #1a3050;
+  --acc:     #00e5a0;
+  --acc2:    #ff6b35;
+  --acc3:    #4a9eff;
+  --tex:     #e8edf5;
+  --tx2:     #8899bb;
+  --tx3:     #4a5a7a;
+  --dan:     #ff4757;
+  --gol:     #ffd700;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--tex);
+  font-family: 'DM Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+/* Safe area for iPhone notch */
+.safe-top    { padding-top: env(safe-area-inset-top); }
+.safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+
+.font-bebas { font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; }
+.font-mono  { font-family: 'JetBrains Mono', monospace; font-weight: 700; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-thumb { background: var(--bor); border-radius: 2px; }
+
+/* Animations */
+@keyframes slideUp   { from { transform: translateY(100%); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes fadeIn    { from { opacity: 0; } to { opacity: 1; } }
+@keyframes pulse     { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+@keyframes shimmer   { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+
+.animate-slideup { animation: slideUp 0.28s ease; }
+.animate-fadein  { animation: fadeIn 0.2s ease; }
+.animate-pulse-slow { animation: pulse 1.4s infinite; }
+
+/* Tap highlight */
+* { -webkit-tap-highlight-color: transparent; }
+button { touch-action: manipulation; }
+
+/* Input */
+input, select, textarea {
+  background: var(--sur2);
+  border: 1px solid var(--bor);
+  color: var(--tex);
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  width: 100%;
+  -webkit-appearance: none;
+  outline: none;
+}
+input:focus, select:focus { border-color: var(--acc); }
